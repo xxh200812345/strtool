@@ -3,7 +3,7 @@ LIB＿PATH = '';
 BOOTSTRAP_JS_PATH = LIB＿PATH + 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js';
 BOOTSTRAP_CSS_PATH = LIB＿PATH + 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css';
 
-JQ_PATH = LIB＿PATH + 'https://code.jquery.com/jquery-3.5.1.slim.min.js';
+JQ_PATH = LIB＿PATH + 'https://code.jquery.com/jquery-3.6.0.min.js';
 
 JQ_UI_JS_PATH = LIB＿PATH + 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js';
 JQ_UI_CSS_PATH = LIB＿PATH + 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css';
