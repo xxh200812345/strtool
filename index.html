@@ -1,1 +1,30 @@
+<!-- https://cn.vuejs.org/v2/guide/conditional.html -->
+<!-- mark : 计算属性缓存 vs 方法 -->
+<!DOCTYPE html>
+<html>
 
+<head>
+  <title>My first Vue app</title>
+  <script src="js/importfile.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <span>Using v-html directive: <span v-html="rawHtml"></span></span>
+    <a :[key]="url" @click="doSomething">...</a>
+
+  </div>
+
+  <div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>now: "{{ now }}"</p>
+  </div>
+
+  <div id="exampleR">exampleR
+    <p>random array: {{ randomArray }}</p>
+  </div>
+</body>
+
+</html>
