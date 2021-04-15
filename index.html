@@ -5,26 +5,96 @@
 
 <head>
   <title>My first Vue app</title>
-  <script src="js/importfile.js"></script>
+
+  <style>
+    .bd-clipboard {
+      display: block;
+      position: relative;
+      float: right;
+    }
+
+    .btn-clipboard {
+      position: absolute;
+      top: .4rem;
+      right: .65rem;
+      z-index: 10;
+      display: block;
+      padding: .25rem .5rem;
+      font-size: .65em;
+      color: #0d6efd;
+      background-color: #fff;
+      border: 1px solid;
+      border-radius: .25rem;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="app">
-    <p>Using mustaches: {{ rawHtml }}</p>
-    <span>Using v-html directive: <span v-html="rawHtml"></span></span>
-    <a :[key]="url" @click="doSomething">...</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">TOOL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">文字处理</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 
+  <div id="strDiv" class="container p-2">
+    <div class="row justify-content-md-center">
+      <div class="col-lg col-sm fs-5">
+        <label for="exampleFormControlTextarea1" class="form-label">处理内容</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <div class="col-lg col-sm align-self-center">
+        <button type="button" class="btn btn-success">倒转</button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
+          title="Tooltip on left">
+          Tooltip on left
+        </button>
+      </div>
+      <div class="col-lg col-sm fs-5">
+        <div class="bd-clipboard">
+          <button type="button" class="btn-clipboard btn-outline-primary copyBtn" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="复制到剪贴板">Copy</button>
+        </div>
+        <label for="exampleFormControlTextarea1" class="form-label">结果</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
   </div>
-
-  <div id="example">
-    <p>Original message: "{{ message }}"</p>
-    <p>Computed reversed message: "{{ reversedMessage }}"</p>
-    <p>now: "{{ now }}"</p>
-  </div>
-
-  <div id="exampleR">exampleR
-    <p>random array: {{ randomArray }}</p>
-  </div>
+  <script src="js/importfile.js"></script>
 </body>
 
 </html>
