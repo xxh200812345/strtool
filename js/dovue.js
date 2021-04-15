@@ -1,71 +1,48 @@
-var exampleR = new Vue({
-  el: '#exampleR',
-  data: {
+$(function () {
 
-  },
-  computed: {
-    // 计算属性的 getter
-    randomArray: function () {
-      let size = 10;
-      let array = [];
-      array.push(this.randomNum(0))
-      for (let i = 1; i < size; i++) {
-        array.push(this.randomNum(array[array.length - 1]))
-      }
-      return array
+
+  let strDiv = new Vue({
+    el: '#strDiv',
+    data: {
+      inputStr: "",
+      outputStr: "aaa",
     },
-  },
-  methods: {
-    randomNum: function (startNum) {
-      return startNum + Math.floor(Math.random() * 100) + 1;
-    }
-  }
-});
+    created: function () {
+      Vue.nextTick(function () {
+        // DOM 更新了
+        let copyTooltipTriggerList = [].slice.call($('.copyBtn'));
+        let tooltipList = copyTooltipTriggerList.map(function (tooltipTriggerEl) {
+          let ta = $(tooltipTriggerEl).parent(0).nextAll('textarea');
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    rawHtml: '<span style="color: red">This should be red.</span>',
-    key: "href",
-    url: "http://www.123.com",
+          $(tooltipTriggerEl).click(async (e) => {
+            try {
+              await navigator.clipboard.writeText(ta.val());
+              tooltipTriggerEl.dataset.bsOriginalTitle = "复制成功";
+              $(tooltipTriggerEl).tooltip('show');
 
-  },
-  methods: {
-    doSomething: function () {
-      alert("aaa");
-      return false;
-    }
-  }
-});
+              tooltipTriggerEl.addEventListener('hidden.bs.tooltip', function () {
+                tooltipTriggerEl.dataset.bsOriginalTitle = "复制到剪贴板";
+              });
 
-var vm = new Vue({
-  el: '#example',
-  data: {
-    message: 'Hello',
-    firstName: "Foo",
-    lastName: "Bar",
-  },
-  computed: {
-    // 计算属性的 getter
-    reversedMessage: function () {
-      // `this` 指向 vm 实例
-      return this.message.split('').reverse().join('')
+            } catch (err) {
+              console.error('Failed to copy: ', err);
+            }
+          });
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        })
+      })
     },
-    now: function () {
-      return Date.now()
 
-    },
-    fullName: {
-      // getter
-      get: function () {
-        return this.firstName + ' ' + this.lastName
+    methods: {
+      copyOutPutStrToClipboard() {
+        try {
+          //await navigator.clipboard.writeText(outputStr);
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+        }
       },
-      // setter
-      set: function (newValue) {
-        var names = newValue.split(' ')
-        this.firstName = names[0]
-        this.lastName = names[names.length - 1]
-      }
     }
-  }
+  });
+
 });
+
