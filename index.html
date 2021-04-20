@@ -15,7 +15,7 @@
 
     .btn-clipboard {
       position: absolute;
-      top: .4rem;
+      top: .2rem;
       right: .65rem;
       z-index: 10;
       display: block;
@@ -42,31 +42,6 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">文字处理</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>
@@ -75,14 +50,11 @@
     <div class="row justify-content-md-center">
       <div class="col-lg col-sm fs-5">
         <label for="exampleFormControlTextarea1" class="form-label">处理内容</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" v-model="inputStr" rows="3"></textarea>
       </div>
       <div class="col-lg col-sm align-self-center">
-        <button type="button" class="btn btn-success">倒转</button>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
-          title="Tooltip on left">
-          Tooltip on left
-        </button>
+        <button type="button" class="btn btn-success m-1" v-for="item in strBtns"
+          @click="handleClick(item.eventName)">{{item.name}}</button>
       </div>
       <div class="col-lg col-sm fs-5">
         <div class="bd-clipboard">
@@ -90,7 +62,7 @@
             data-bs-placement="top" title="复制到剪贴板">Copy</button>
         </div>
         <label for="exampleFormControlTextarea1" class="form-label">结果</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" v-model="outputStr" rows="3"></textarea>
       </div>
     </div>
   </div>
