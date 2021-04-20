@@ -65,7 +65,7 @@ window.onload = function () {
 				appendCss(W_JQ_UI_CSS_PATH);
 
 				vuejs.onload = () => {
-					appendJs(CUSTOM_VUEJS_PATH);
+					appendJs(CUSTOM_VUEJS_PATH, 'module');
 				};
 			});
 		};
