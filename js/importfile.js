@@ -24,6 +24,8 @@ const W_VUEJS_PATH = 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js';
 
 //主逻辑文件
 const CUSTOM_VUEJS_PATH = './js/dovue.js';
+//文字处理文件
+const CUSTOM_STRING_PATH = './js/string.js';
 
 
 //console.log = () => { };
@@ -43,7 +45,8 @@ window.onload = function () {
 		appendCss(JQ_UI_CSS_PATH);
 
 		vuejs.onload = () => {
-			appendJs(CUSTOM_VUEJS_PATH);
+			appendJs(CUSTOM_STRING_PATH, 'module');
+			appendJs(CUSTOM_VUEJS_PATH, 'module');
 		};
 	};
 
@@ -70,10 +73,10 @@ window.onload = function () {
 
 };
 
-function appendJs(URL) {
+function appendJs(URL, type = 'text/javascript') {
 	console.log("[FILE_PATH]:" + URL);
 	var el = document.createElement('script');
-	el.type = 'text/javascript';
+	el.type = type;
 	el.src = URL;
 	document.body.appendChild(el);
 
