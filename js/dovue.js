@@ -1,4 +1,4 @@
-import * as mstr from './string.js';
+import * as mstr from '/js/string.js';
 $(function () {
 
   let strDiv = new Vue({
